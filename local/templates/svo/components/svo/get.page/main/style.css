@@ -1,0 +1,39 @@
+@media (max-width: 600px) {
+    .info-card_step .info-card__text{
+        font-size: 18px;
+    }
+    .info-cards.steps .info-card__title {
+        padding: 2.5rem 2.25rem 0 0;
+    }
+    .wrapper .callback {
+        background: url(/local/templates/svo/assets/../img/callback/bg.png) no-repeat 67% / cover;
+    }
+}
+.header__wrap .btn_white:hover, .form__btn.btn_white:hover  {
+    background: #1252da;
+    color: #fff;
+}
+.wrapper .header__mobile-btn:before{
+    height: 1.94rem;
+}
+a.header__btn.btn{
+    font-size: 17px;
+}
+a.header__link {
+    font-weight: 400;
+}
+
+.support-item:hover .support-item__hidden {
+    bottom: 0;
+    opacity: 1;
+    visibility: visible;
+}
+.header__drop-down-link{
+    font-weight: 400;
+}
+.header__mobile-btn.active{
+    opacity: 1;
+}
+.home .home__items {
+    gap: 1rem;
+}
