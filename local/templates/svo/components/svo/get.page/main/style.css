@@ -37,3 +37,16 @@ a.header__link {
 .home .home__items {
     gap: 1rem;
 }
+.main_btn_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0 0 0;
+}
+.main_btn_s {
+    background-color: #1252DA;
+    color: #fff;
+    border-radius: 5px;
+    padding: 13px 30px;
+    text-align: center;
+}

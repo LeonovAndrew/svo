@@ -201,7 +201,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     <button id="cookie-accept">Согласен</button>
 </div>
 
-
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const banner = document.getElementById("cookie-policy");
@@ -216,6 +216,22 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
             localStorage.setItem("cookieAccepted", "true");
             banner.style.display = "none";
         });
+    });
+</script>
+<script>
+    const readMoreSlider = new Swiper(".read-more__slider", {
+        spaceBetween: 47,
+        slidesPerView: 1,
+
+        breakpoints: {
+            991: {
+                slidesPerView: 3,
+            },
+        },
+
+        pagination: {
+            el: ".read-more__pagination",
+        },
     });
 </script>
 </body>
