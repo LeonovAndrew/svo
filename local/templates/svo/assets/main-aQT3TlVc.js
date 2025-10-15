@@ -10755,16 +10755,21 @@ $(() => {
         form.removeClass("invalid");
     }
 
-    function validate(form) {
-        if (form.querySelector(".input_error")) {
-            disableForm($(form));
-            $(form).find(".form__message").text("Некоторые поля заполнены неверно");
-            $(form).find(".form__message").addClass("form__message_warning");
-            showMessage($(form).find(".form__message"));
-        } else {
-            enableForm($(form));
-        }
-    }
+	function validate(form) {
+		console.log(form)
+		// Ищем только input_error НЕ в элементах капчи
+		const errorInputs = form.querySelectorAll('.input_error:not([class*="captcha"]):not([name*="smart-token"]):not([id*="captcha"])');
+
+		if (errorInputs.length > 0) {
+			disableForm($(form));
+			$(form).find(".form__message").text("Некоторые поля заполнены неверно");
+			$(form).find(".form__message").addClass("form__message_warning");
+			showMessage($(form).find(".form__message"));
+		} else {
+			enableForm($(form));
+		}
+	}
+
 
     function validateInput(input) {
         if ($(input).hasClass("tel")) {
@@ -10801,33 +10806,46 @@ $(() => {
         }, 5000);
     }
 
-    $("form").on("submit", (event) => {
-        const form = event.currentTarget;
+	$("form").on("submit", (event) => {
+		const form = event.currentTarget;
 
-        if (!form.classList.contains("invalid")) {
-            const formData = new FormData(form);
+		if (!form.classList.contains("invalid")) {
+			const formData = new FormData(form);
 
-            fetch(form.getAttribute("action"), {
-                method: "POST",
-                body: formData,
-            }).then((res) => {
-                $(form).find(".form__message").text("Данные успешно отправлены. Мы скоро свяжемся с вами!");
-                $(form).find(".input").val("");
-                $(form).find(".form__message").removeClass("form__message_error");
-                $(form).find(".form__message").removeClass("form__message_warning");
-                // showMessage($(form).find(".form__message"));
-                showPopup();
-				console.log(res)
-            }).catch((res) => {
-				console.log(res)
-                $(form).find(".form__message").text("При отправке данных произошла ошибка. Попробуйте позже.");
-                $(form).find(".form__message").addClass("form__message_error");
-                showMessage($(form).find(".form__message"));
-            });
+			fetch(form.getAttribute("action"), {
+				method: "POST",
+				body: formData,
+			})
+				.then((response) => response.json())
+				.then((data) => {
+					if (data.success) {
+						// Успешная отправка
+						$(form).find(".form__message").text("Данные успешно отправлены. Мы скоро свяжемся с вами!");
+						$(form).find(".input").val("");
+						$(form).find(".form__message").removeClass("form__message_error");
+						$(form).find(".form__message").removeClass("form__message_warning");
+						// showMessage($(form).find(".form__message"));
+						showPopup();
+						console.log(data);
+					} else {
+						// Ошибка от сервера (валидация, капча и т.д.)
+						$(form).find(".form__message").text(data.message || "При отправке данных произошла ошибка.");
+						$(form).find(".form__message").addClass("form__message_error");
+						showMessage($(form).find(".form__message"));
+						console.log(data);
+					}
+				})
+				.catch((error) => {
+					// Ошибка сети или другая критическая ошибка
+					console.log(error);
+					$(form).find(".form__message").text("При отправке данных произошла ошибка. Попробуйте позже.");
+					$(form).find(".form__message").addClass("form__message_error");
+					showMessage($(form).find(".form__message"));
+				});
 
-            event.preventDefault();
-        }
-    });
+			event.preventDefault();
+		}
+	});
 
     $("form button[type='submit']").on("click", (e) => {
         const form = e.currentTarget.closest("form");

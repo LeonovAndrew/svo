@@ -16,6 +16,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
             href="https://unpkg.com/aos@2.3.1/dist/aos.css"
             rel="stylesheet"
     />
+    <script src="https://smartcaptcha.yandexcloud.net/captcha.js" defer></script>
     <?php
     global $APPLICATION;
     $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https" : "http";
@@ -24,6 +25,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     ?>
     <link rel="canonical" href="<?= $protocol ?>://<?= $host ?><?= $uri ?>"/>
     <?php Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/assets/main-ChIB8fuU.css?v=" . time()); ?>
+    <?php Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/assets/new-pages.css?v=" . time()); ?>
     <?php $APPLICATION->ShowHead(); ?>
     <title><?php $APPLICATION->ShowTitle(); ?></title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -33,6 +35,10 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="/local/templates/svo/js/animations.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.min.js"></script>
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             $("#modal").iziModal();

@@ -102,6 +102,9 @@ $arProp = $arResult['PROPERTIES'];
                 <?php endforeach;?>
             </div>
         </div>
+        <div class="main_btn_wrap">
+            <a href="/viplaty-i-lgoty/" class="main_btn_s">Подробнее</a>
+        </div>
     </section>
 <?php endif;?>
 
@@ -178,11 +181,14 @@ $arProp = $arResult['PROPERTIES'];
             <?php endforeach;?>
         </div>
 
-        <div class="support__btn-wrap">
+        <!--<div class="support__btn-wrap">
             <button type="button" class="support__more-btn">
                 Посмотреть больше
             </button>
-        </div>
+        </div>-->
+            <div class="main_btn_wrap">
+                <a href="/viplaty-i-lgoty/" class="read-more__more-btn">Смотреть еще</a>
+            </div>
         <?php endif;?>
     </div>
 </section>
@@ -291,7 +297,9 @@ $arProp = $arResult['PROPERTIES'];
         </div>
     </div>
     <img src="<?=$imgDocMob?>" alt="Фото паспорта и военного билета" loading="lazy" class="documents__img documents__img_mobile"/>
-
+    <div class="main_btn_wrap">
+        <a href="/chto-delat/" class="main_btn_s">Подробнее</a>
+    </div>
 </section>
 
 <section class="foreigner">
@@ -397,7 +405,68 @@ $arProp = $arResult['PROPERTIES'];
             Оставить заявку
         </a>
     </div>
+    <div class="main_btn_wrap">
+        <a href="/usloviya/" class="read-more__more-btn">Смотреть еще</a>
+    </div>
 </section>
+
+<?$APPLICATION->IncludeComponent(
+	"bitrix:news.list",
+	"news2",
+	Array(
+		"ACTIVE_DATE_FORMAT" => "j F Y",
+		"ADD_SECTIONS_CHAIN" => "Y",
+		"AJAX_MODE" => "N",
+		"AJAX_OPTION_ADDITIONAL" => "",
+		"AJAX_OPTION_HISTORY" => "N",
+		"AJAX_OPTION_JUMP" => "N",
+		"AJAX_OPTION_STYLE" => "Y",
+		"CACHE_FILTER" => "N",
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "36000000",
+		"CACHE_TYPE" => "A",
+		"CHECK_DATES" => "Y",
+		"DETAIL_URL" => "",
+		"DISPLAY_BOTTOM_PAGER" => "Y",
+		"DISPLAY_DATE" => "Y",
+		"DISPLAY_NAME" => "Y",
+		"DISPLAY_PICTURE" => "Y",
+		"DISPLAY_PREVIEW_TEXT" => "Y",
+		"DISPLAY_TOP_PAGER" => "N",
+		"FIELD_CODE" => array("ID", "CODE", "XML_ID", "NAME", "TAGS", "SORT", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT", "DETAIL_PICTURE", "DATE_ACTIVE_FROM", "ACTIVE_FROM", "DATE_ACTIVE_TO", "ACTIVE_TO", "SHOW_COUNTER", "SHOW_COUNTER_START", "IBLOCK_TYPE_ID", "IBLOCK_ID", "IBLOCK_CODE", "IBLOCK_NAME", "IBLOCK_EXTERNAL_ID", "DATE_CREATE", "CREATED_BY", "CREATED_USER_NAME", "TIMESTAMP_X", "MODIFIED_BY", "USER_NAME", ""),
+		"FILTER_NAME" => "",
+		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
+		"IBLOCK_ID" => "3",
+		"IBLOCK_TYPE" => "pages",
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+		"INCLUDE_SUBSECTIONS" => "Y",
+		"MESSAGE_404" => "",
+		"NEWS_COUNT" => "20",
+		"PAGER_BASE_LINK_ENABLE" => "N",
+		"PAGER_DESC_NUMBERING" => "N",
+		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+		"PAGER_SHOW_ALL" => "N",
+		"PAGER_SHOW_ALWAYS" => "N",
+		"PAGER_TEMPLATE" => ".default",
+		"PAGER_TITLE" => "Новости",
+		"PARENT_SECTION" => "",
+		"PARENT_SECTION_CODE" => "statyi",
+		"PREVIEW_TRUNCATE_LEN" => "",
+		"PROPERTY_CODE" => array("", ""),
+		"SET_BROWSER_TITLE" => "Y",
+		"SET_LAST_MODIFIED" => "N",
+		"SET_META_DESCRIPTION" => "Y",
+		"SET_META_KEYWORDS" => "Y",
+		"SET_STATUS_404" => "N",
+		"SET_TITLE" => "Y",
+		"SHOW_404" => "N",
+		"SORT_BY1" => "ACTIVE_FROM",
+		"SORT_BY2" => "SORT",
+		"SORT_ORDER1" => "DESC",
+		"SORT_ORDER2" => "ASC",
+		"STRICT_SECTION_CHECK" => "N",
+	)
+);?>
 
 <section class="questions">
     <div class="container">
@@ -453,116 +522,6 @@ $arProp = $arResult['PROPERTIES'];
         </div>
     <?php endif;?>
 </section>
-
-<section id="callback" class="callback">
-    <div class="container">
-        <form action="/ajax/ajax.php" method="POST" class="form">
-            <h2 class="form__title block-title">
-                Стань одним из СВОих,<br> <br class="br-tab"> ты нужен Родине!
-            </h2>
-            <p class="form__subtitle">
-                Оставь заявку и мы свяжемся в ближайшее время
-            </p>
-
-            <fieldset class="form__inputs">
-                <legend class="form__legend">
-                    Контактная информация
-                </legend>
-
-                <div class="form__input-group">
-                    <label for="fullname" class="form__input-name">
-                        ФИО
-                        <span class="form__input-name_mini">(обязательное поле)</span>
-                    </label>
-                    <input type="text" name="name" id="fullname" required class="form__input input"/>
-                </div>
-
-                <div class="form__input-group">
-                    <label for="region" class="form__input-name">
-                        Регион проживания
-                    </label>
-                    <select name="region" id="region" class="form__input input">
-                        <option value="">Выберите регион</option>
-                        <option value="Абинский район">Абинский район</option>
-                        <option value="Анапа город-курорт">Анапа город-курорт</option>
-                        <option value="Апшеронский район">Апшеронский район</option>
-                        <option value="Армавир город">Армавир город</option>
-                        <option value="Белоглинский район">Белоглинский район</option>
-                        <option value="Белореченский район">Белореченский район</option>
-                        <option value="Брюховецкий район">Брюховецкий район</option>
-                        <option value="Выселковский район">Выселковский район</option>
-                        <option value="Геленджик город-курорт">Геленджик город-курорт</option>
-                        <option value="Горячий Ключ город">Горячий Ключ город</option>
-                        <option value="Гулькевичский район">Гулькевичский район</option>
-                        <option value="Динской район">Динской район</option>
-                        <option value="Ейский район">Ейский район</option>
-                        <option value="Кавказский район">Кавказский район</option>
-                        <option value="Калининский район">Калининский район</option>
-                        <option value="Каневской район">Каневской район</option>
-                        <option value="Кореновский район">Кореновский район</option>
-                        <option value="Красноармейский район">Красноармейский район</option>
-                        <option value="Краснодар город">Краснодар город</option>
-                        <option value="Крыловский район">Крыловский район</option>
-                        <option value="Крымский район">Крымский район</option>
-                        <option value="Курганинский район">Курганинский район</option>
-                        <option value="Кущевский район">Кущевский район</option>
-                        <option value="Лабинский район">Лабинский район</option>
-                        <option value="Ленинградский район">Ленинградский район</option>
-                        <option value="Мостовский район">Мостовский район</option>
-                        <option value="Новокубанский район">Новокубанский район</option>
-                        <option value="Новопокровский район">Новопокровский район</option>
-                        <option value="Новороссийск город">Новороссийск город</option>
-                        <option value="Отрадненский район">Отрадненский район</option>
-                        <option value="Павловский район">Павловский район</option>
-                        <option value="Приморско-Ахтарский район">Приморско-Ахтарский район</option>
-                        <option value="Северский район">Северский район</option>
-                        <option value="Сириус ФТ">Сириус ФТ</option>
-                        <option value="Славянский район">Славянский район</option>
-                        <option value="Сочи город-курорт">Сочи город-курорт</option>
-                        <option value="Староминский район">Староминский район</option>
-                        <option value="Тбилисский район">Тбилисский район</option>
-                        <option value="Темрюкский район">Темрюкский район</option>
-                        <option value="Тимашевский район">Тимашевский район</option>
-                        <option value="Тихорецкий район">Тихорецкий район</option>
-                        <option value="Туапсинский район">Туапсинский район</option>
-                        <option value="Успенский район">Успенский район</option>
-                        <option value="Усть-Лабинский район">Усть-Лабинский район</option>
-                        <option value="Щербиновский район">Щербиновский район</option>
-                    </select>
-                </div>
-
-                <div class="form__input-group">
-                    <label for="phone" class="form__input-name">
-                        Номер телефона <span class="form__input-name_mini">(обязательное поле)</span>
-                    </label>
-                    <input type="text" name="phone" id="phone" required class="form__input input tel"/>
-                </div>
-
-                <div class="form__input-group">
-                    <label for="age" class="form__input-name">
-                        Возраст
-                    </label>
-                    <input type="text" name="old" id="age" class="form__input input"/>
-                </div>
-            </fieldset>
-
-            <div role="alert" class="form__message">
-                Данные успешно отправлены. Мы скоро свяжемся с
-                вами!
-            </div>
-
-            <button type="submit" class="form__btn btn btn_white">
-                Оставить заявку
-            </button>
-
-            <p class="form__descr">
-                Нажимая кнопку, я даю свое согласие на<br class="br-mob"> обработку
-                                моих персональных<br><br class="br-tab"> данных, в<br class="br-mob"> соответствии с
-                                Федеральным законом от<br class="br-mob"> 27.07.2006 года<br><br class="br-tab"> №152-ФЗ
-                                «О персональных<br class="br-mob"> данных», на условиях и для
-                                целей,<br><br class="br-tab"> определенных<br class="br-mob"> в Согласии на обработку
-                                персональных данных
-            </p>
-        </form>
-    </div>
-</section>
+<?php
+include $_SERVER['DOCUMENT_ROOT'].SITE_TEMPLATE_PATH.'/include/form.php';
+?>
