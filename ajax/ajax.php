@@ -18,7 +18,7 @@ try {
     if (empty($captcha_token)) throw new Exception('Не пройдена проверка капчи');
 
     // Валидация капчи через Яндекс API
-    $captcha_secret = 'ysc2_sxaLgBItJYBQFamyynjicL2254TeR2l51plryKHK8f262882';
+    $captcha_secret = \COption::GetOptionString('svo.settings', 'yasecret');
     $captcha_url = 'https://smartcaptcha.yandexcloud.net/validate';
 
     $captcha_params = [

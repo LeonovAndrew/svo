@@ -25,6 +25,8 @@ if ($APPLICATION->GetGroupRight('svo.settings') >= 'R') {
         COption::SetOptionString('svo.settings', 'name', $_REQUEST['name']);
         COption::SetOptionString('svo.settings', 'login', $_REQUEST['login']);
         COption::SetOptionString('svo.settings', 'password', $_REQUEST['password']);
+        COption::SetOptionString('svo.settings', 'yasecret', $_REQUEST['yasecret']);
+        COption::SetOptionString('svo.settings', 'yakey', $_REQUEST['yakey']);
     }
 
     $tabControl->Begin();
@@ -87,6 +89,20 @@ if ($APPLICATION->GetGroupRight('svo.settings') >= 'R') {
             <td width="60%">
                 <input type="text" name="password"
                        value="<?= htmlspecialcharsbx(COption::GetOptionString('svo.settings', 'password')) ?>">
+            </td>
+        </tr>
+        <tr>
+            <td width="40%">Яндекс капча ключ:</td>
+            <td width="60%">
+                <input type="text" name="yakey"
+                       value="<?= htmlspecialcharsbx(COption::GetOptionString('svo.settings', 'yakey')) ?>">
+            </td>
+        </tr>
+        <tr>
+            <td width="40%">Яндекс капча secret:</td>
+            <td width="60%">
+                <input type="text" name="yasecret"
+                       value="<?= htmlspecialcharsbx(COption::GetOptionString('svo.settings', 'yasecret')) ?>">
             </td>
         </tr>
         <?

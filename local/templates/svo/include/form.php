@@ -88,9 +88,12 @@
                     </label>
                     <input type="text" name="old" id="age" class="form__input input"/>
                 </div>
+                <?php $sitekey = \COption::GetOptionString('svo.settings', 'yakey');?>
+                <?php if(!empty($sitekey)):?>
                 <div class="form__input-group">
                     <div id="captcha-container" class="smart-captcha" data-sitekey="ysc1_sxaLgBItJYBQFamyynjioxiK2r4SWzxDqy1ff6ged49e7cfc"></div>
                 </div>
+                <?php endif;?>
             </fieldset>
 
             <div role="alert" class="form__message">
